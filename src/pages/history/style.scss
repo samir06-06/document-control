@@ -1,0 +1,239 @@
+@import "../../variables.scss";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+
+/* Custom styles for DataTables */
+input,
+textarea {
+  user-select: text;
+}
+
+
+
+#data-table {
+
+  .Primary{
+    padding:3px;
+    font-size: 18px;
+    border: none;
+    i{
+      color:blue;
+      background: none;
+    }
+  }
+    .Succes{
+      padding:3px;
+      font-size: 18px;
+      border: none;
+      i{
+        background: none;
+        color:green;
+      }
+    }
+
+    .Warning{
+      padding:3px;
+      font-size: 18px;
+      border: none;
+      i{
+        background: none;
+        color:$fourth;
+      }
+    }
+    .Danger{
+      padding:3px;
+      font-size: 18px;
+      border: none;
+      i{
+    background: none;
+    color: red;
+  }
+}
+
+  .d-md-flex {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: end !important;
+    justify-content: center !important;
+  }
+  .form-control-sm{
+    border: 1px solid grey;
+    margin: 0 5px 5px 0;
+    box-shadow: 0 0 0 3px #304d309e;
+  }
+  
+  .form-control-sm:focus{
+    outline: none;
+    &:hover{
+      border-color: $second;
+      
+    }
+    box-shadow: 0 0 0 3px #304d309e;
+  }
+  .dt-search{
+    label{
+      
+      margin-right: 5px;
+    }
+  }
+  .pagination{
+    margin-bottom: 20px;
+  }
+
+  
+  .dt-buttons {
+    
+    margin-top: 30px;
+    .btn-secondary {
+      
+      background-color: $first;
+      &:hover{
+        background-color: $second;
+        
+      }
+    }
+  }
+
+  .page-link {
+    color: $first;
+  }
+  .page-link[aria-current="page"] {
+    background-color: $first;
+    border-color: $first;
+    color: white;
+    outline: none;
+  }
+  .page-link[aria-current="page"]:focus {
+    box-shadow: 0 0 0 3px #304d309e; /* Custom focus ring (example: pink) */
+    outline: none;
+  }
+  
+  margin: auto;
+  // width: 90vw; /* Set the table width to 97% of the viewport width */
+  // overflow-x: scroll;
+  
+  .table {
+    border-collapse: collapse;
+    width: 100%; /* Make the table use the full width of its container */
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border: none; /* Remove borders between cells */
+      white-space: nowrap; // Prevents text from wrapping to a new line
+      overflow: hidden; // Hides overflow content
+      text-overflow: ellipsis; // Adds ellipsis (...) for overflow text
+    }
+    
+    tbody tr:nth-child(even) {
+      background-color:#304d3056 ; // Light gray background for odd rows
+    }
+    
+    td{
+      border: 1px solid black;
+      padding: 10px 15px;
+    }
+    
+    th {
+      background-color: $first !important;
+      color: white;
+      border: 1px solid black;
+      .dt-column-order::before {
+        display: none;
+      }
+      cursor: default;
+      font-weight: bold;
+      
+      /* Hide sorting icons from the "Name" column header */
+      &.sorting,
+      &.sorting_asc,
+      &.sorting_desc {
+        background: none !important; /* Remove background if it includes sorting icons */
+      }
+      .dt-ordering-asc{
+        border: none;
+      }
+      
+    }
+    
+    tbody {
+      // overflow-x: auto; /* Enable horizontal scrolling for overflow */
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #e2e2e2;
+      }
+    }
+
+    /* Remove bottom border of the table */
+    tfoot {
+      background-color: #f4f4f4;
+
+      th {
+        font-weight: bold;
+        border: none;
+        
+      }
+      .columnsss{
+        background-color: white !important;
+        color: black;
+      }
+    }
+    
+  
+  }
+
+  /* Style for search input fields under column headers */
+  thead input {
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    white-space: nowrap; // Prevents text from wrapping to a new line
+    overflow: hidden; // Hides overflow content
+    text-overflow: ellipsis; // Adds ellipsis (...) for overflow text
+  }
+
+  /* Make DataTables control elements fit within the 97vw */
+  .dataTables_wrapper {
+    width: 100%;
+
+    .dataTables_info,
+    .dataTables_paginate,
+    .dataTables_filter {
+      padding: 8px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate {
+      margin: 0;
+    }
+
+    .dataTables_wrapper .dataTables_filter {
+      text-align: right;
+    }
+
+    .dataTables_wrapper .dataTables_length {
+      float: left;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+      clear: both;
+      padding: 8px 0;
+    }
+  }
+
+  /* Hide sorting icons from the "Name" column header */
+  #example th:nth-child(1).sorting,
+  #example th:nth-child(1).sorting_asc,
+  #example th:nth-child(1).sorting_desc {
+    background: none !important; /* Remove background if it includes sorting icons */
+  }
+}

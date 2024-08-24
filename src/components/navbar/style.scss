@@ -1,0 +1,219 @@
+$content-width: 1400px;
+$breakpoint: 799px;
+$nav-height: 70px;
+$nav-background: #fff;
+$nav-font-color: #0c0c0c;
+$link-hover-color: #f8b500;
+
+@import "../../variables.scss";
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.navigation {
+  // margin-bottom: 20px;
+  height: $nav-height;
+  background: linear-gradient(90deg, $first 0%,$second 75%);
+  position: relative;
+}
+
+
+
+.brand {
+  .logo{
+    color: white;
+    font-weight: 500;
+    img{
+      width: 55px;
+    }
+ }
+  // position: absolute;
+  padding-left: 20px;
+  float: left;
+  line-height: $nav-height;
+  text-transform: uppercase;
+  font-size: 1.4em;
+
+  a,
+  a:visited {
+    color: $nav-background;
+    text-decoration: none;
+  }
+}
+
+nav {
+  float: right;
+  // box-sizing: border-box;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    li {
+      position: relative;
+      i{
+        font-size: 20px;
+        &:hover{
+          color: $third;
+        }
+      }
+
+      
+      
+      a {
+        display: block;
+        padding: 0 20px;
+        line-height: $nav-height;
+        
+        color: $nav-background;
+        text-decoration: none;
+        position: relative;
+        transition: all 300ms ease;
+        &:hover{
+          color: $third;
+        }
+        
+        
+        &::before {
+          z-index: 1;
+          content: "";
+          position: absolute;
+          bottom: 10px;
+          left: 18px;
+          height: 5px;
+          width: 0;
+          background-color: $link-hover-color;
+          transition: width 300ms ease;
+        }
+
+        &:hover::before {
+          width: 70%;
+        }
+
+        &:not(:only-child)::after {
+          content: " ▾";
+          padding-left: 4px;
+        }
+      }
+
+      ul {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+        min-width: 190px;
+
+        li {
+          a {
+            padding: 15px;
+            line-height: 20px;
+          }
+        }
+      }
+
+      &:hover ul {
+        display: block;
+      }
+    }
+  }
+}
+
+.nav-mobile {
+ 
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: $nav-background;
+  height: $nav-height;
+  width: $nav-height;
+
+  #nav-toggle {
+    position: absolute;
+    left: 18px;
+    top: 22px;
+    cursor: pointer;
+    padding: 10px 35px 16px 0;
+
+    span,
+    span::before,
+    span::after {
+      cursor: pointer;
+      border-radius: 1px;
+      height: 5px;
+      width: 35px;
+      background: $link-hover-color;
+      position: absolute;
+      display: block;
+      content: "";
+      transition: all 300ms ease-in-out;
+    }
+
+    span::before {
+      top: -10px;
+    }
+
+    span::after {
+      bottom: -10px;
+    }
+
+    &.active {
+      span {
+        background-color: transparent;
+        &::before {
+          transform: rotate(45deg);
+          top: 0;
+        }
+        &::after {
+          transform: rotate(-45deg);
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint) {
+  .nav-mobile {
+    display: block;
+  }
+
+  nav {
+    width: 100%;
+    padding: $nav-height 0 15px;
+
+    ul {
+      display: none;
+
+      li {
+        float: none;
+
+        a {
+          padding: 15px;
+          line-height: 20px;
+
+          &:hover::before {
+            width: 20%;
+          }
+        }
+
+        ul {
+          position: static;
+
+          li a {
+            padding-left: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  #nav-toggle:checked + nav ul {
+    display: block;
+  }
+}
